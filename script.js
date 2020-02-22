@@ -38,19 +38,10 @@ function writePassword() {
       }
       document.getElementById(`password`).textContent = password.join("")
     }
-  
   }
   else {
     alert(`Please ensure you select at least one character type and that your password length is between 8-128 chaaracters.`)
   }
-
-
-
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
 }
 
 // Add event listener to generate button
