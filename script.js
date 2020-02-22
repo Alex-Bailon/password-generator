@@ -4,16 +4,19 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   let i = 0
+  let password = []
   let lowercase = [`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`, `n`, `o`, `p`, `q`, `r`, `s`, `t`,`u`, `v`, `w`, `x`, `y`, `z`]
   let uppercase = [`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`, `J`, `K`, `L`, `M`, `N`, `O`, `P`, `Q`, `R`, `S`, `T`, `U`, `V`, `W`, `X`, `Y`, `Z`]
   let specialchar = [`!`, `@`, `#`, `$`, `%`, `&`, `*`, `-`]
-  let myArrays = [ lowercase, uppercase, specialchar ]
+  let nums = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+  let myArrays = [ lowercase, uppercase, specialchar, nums ]
   let passlength = prompt(`Between 8 to 128 characters, how long would you like your password to be?`)
   let lowercaseConfirm = confirm(`Would you like lower-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
   let uppercaseConfirm = confirm(`Would you like upper-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
   let specialCharConfirm = confirm(`Would you like lower-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
-  if ((lowercaseConfirm == true || uppercaseConfirm == true || specialCharConfirm == true) && passlength < 129 && passlength > 7 ){
-    let passwordConfirm = confirm(`You would like ${ passlength } character password. It is ${ lowercaseConfirm } that you want lower-case letters. It is ${ uppercaseConfirm } that you want upper-case letters. It is ${ specialCharConfirm } that you want special characters.`)   
+  let numsConfirm = confirm(`Would you like numbers for your password? (press cancel for "No and okay for "Yes"`)
+  if ((lowercaseConfirm == true || uppercaseConfirm == true || specialCharConfirm == true || numsConfirm == true) && passlength < 129 && passlength > 7 ){
+    let passwordConfirm = confirm(`You would like ${ passlength } character password. It is ${ lowercaseConfirm } that you want lower-case letters. It is ${ uppercaseConfirm } that you want upper-case letters. It is ${ specialCharConfirm } that you want special characters. It is ${ numsConfirm } that you want numbers.`)   
     if( passwordConfirm == true ) {
       var passArray = []
       if (lowercaseConfirm == true ){
@@ -25,8 +28,20 @@ function writePassword() {
       if (specialCharConfirm == true ){
         passArray.push(2)
       }
-
+      if (numsConfirm == true ){
+        passArray.push(3)
+      }
+      if (passArray.includes(0)){
+        while (i < passlength){
+          randoArray = myArrays[Math.floor(Math.random() * myArrays.length)]
+          password.push(randoArray[Math.floor(Math.random() * randoArray.length)])
+          i++
+        }
+      }
+      console.log(password.join(""))
+      console.log(passArray)
     }
+  
   }
   else {
     alert(`Please ensure you select at least one character type and that your password length is between 8-128 chaaracters.`)
