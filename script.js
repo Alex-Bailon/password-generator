@@ -9,7 +9,7 @@ function writePassword() {
   let uppercase = [`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`, `J`, `K`, `L`, `M`, `N`, `O`, `P`, `Q`, `R`, `S`, `T`, `U`, `V`, `W`, `X`, `Y`, `Z`]
   let specialchar = [`!`, `@`, `#`, `$`, `%`, `&`, `*`, `-`]
   let nums = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-  let myArrays = [ lowercase, uppercase, specialchar, nums ]
+  let passArray = []
   let passlength = prompt(`Between 8 to 128 characters, how long would you like your password to be?`)
   let lowercaseConfirm = confirm(`Would you like lower-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
   let uppercaseConfirm = confirm(`Would you like upper-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
@@ -18,28 +18,29 @@ function writePassword() {
   if ((lowercaseConfirm == true || uppercaseConfirm == true || specialCharConfirm == true || numsConfirm == true) && passlength < 129 && passlength > 7 ){
     let passwordConfirm = confirm(`You would like ${ passlength } character password. It is ${ lowercaseConfirm } that you want lower-case letters. It is ${ uppercaseConfirm } that you want upper-case letters. It is ${ specialCharConfirm } that you want special characters. It is ${ numsConfirm } that you want numbers.`)   
     if( passwordConfirm == true ) {
-      var passArray = []
+      // var passArray = []
       if (lowercaseConfirm == true ){
-        passArray.push(0)
+        passArray.push(lowercase)
       }
       if (uppercaseConfirm == true ){
-        passArray.push(1)
+        passArray.push(uppercase)
       }
       if (specialCharConfirm == true ){
-        passArray.push(2)
+        passArray.push(specialchar)
       }
       if (numsConfirm == true ){
-        passArray.push(3)
+        passArray.push(nums)
       }
-      if (passArray.includes(0)){
-        while (i < passlength){
-          randoArray = myArrays[Math.floor(Math.random() * myArrays.length)]
-          password.push(randoArray[Math.floor(Math.random() * randoArray.length)])
-          i++
-        }
+      while ( i < passlength ){
+            randoArray = passArray[Math.floor(Math.random() * passArray.length)]
+            password.push(randoArray[Math.floor(Math.random() * randoArray.length)])
+            i++
+
       }
+      
       console.log(password.join(""))
       console.log(passArray)
+      console.log(window)
     }
   
   }
