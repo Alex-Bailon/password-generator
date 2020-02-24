@@ -11,10 +11,10 @@ function writePassword() {
   let specialchar = [`!`, `@`, `#`, `$`, `%`, `&`, `*`, `-`]
   let nums = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
   let passlength = prompt(`Between 8 to 128 characters, how long would you like your password to be?`)
-  let lowercaseConfirm = confirm(`Would you like lower-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
-  let uppercaseConfirm = confirm(`Would you like upper-case letters for you password? (Presss cancel for "No" and okay for "Yes")`)
-  let specialCharConfirm = confirm(`Would you like special characters letters for you password? (Presss cancel for "No" and okay for "Yes")`)
-  let numsConfirm = confirm(`Would you like numbers for your password? (press cancel for "No and okay for "Yes"`)
+  let lowercaseConfirm = confirm(`Would you like lower-case letters for you password? (Presss Cancel for "No" and OK for "Yes")`)
+  let uppercaseConfirm = confirm(`Would you like upper-case letters for you password? (Presss Cancel for "No" and OK for "Yes")`)
+  let specialCharConfirm = confirm(`Would you like special characters letters for you password? (Presss Cancel for "No" and OK for "Yes")`)
+  let numsConfirm = confirm(`Would you like numbers for your password? (press Cancel for "No and OK for "Yes")`)
   if ((lowercaseConfirm == true || uppercaseConfirm == true || specialCharConfirm == true || numsConfirm == true) && passlength < 129 && passlength > 7 ){
     let passwordConfirm = confirm(`You would like ${ passlength } character password. It is ${ lowercaseConfirm } that you want lower-case letters. It is ${ uppercaseConfirm } that you want upper-case letters. It is ${ specialCharConfirm } that you want special characters. It is ${ numsConfirm } that you want numbers.`)   
     if( passwordConfirm == true ) {
